@@ -23,7 +23,10 @@ def get_movies(
 
 
 def get_movie_by_id(movie_id: int) -> Movie:
-    return Movie.objects.get(id=movie_id)
+    try:
+        return Movie.objects.get(id=movie_id)
+    except Movie.DoesNotExist:
+        pass
 
 
 def create_movie(
